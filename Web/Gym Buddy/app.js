@@ -17,8 +17,8 @@ const findWeightInput = document.querySelector('#findWeight');
 const assignments = ['a', 'b', 'c', 'd', 'e', 'f'];
 const cancelTimer = document.querySelector('.cancel');
 let screenLock = null;
-let currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-let currentBase = localStorage.getItem('base') ? localStorage.getItem('base') : 'light';
+let currentTheme = localStorage.getItem('gym-theme') ? localStorage.getItem('gym-theme') : null;
+let currentBase = localStorage.getItem('gym-base') ? localStorage.getItem('gym-base') : 'light';
 let currentUnits = localStorage.getItem('units') ? localStorage.getItem('units') : 'lbs';
 let currentPage = 2;
 let edges = [];
@@ -44,7 +44,7 @@ function make(item) { return document.createElement(item.toString()); }
 function makeArray(list) { return Object.values(list.children).slice(1) }
 function setAttribute(attribute, value) {
     document.documentElement.setAttribute(`data-${attribute}`, value);
-    localStorage.setItem(attribute, value);
+    localStorage.setItem(`gym-${attribute}`, value);
 }
 function nextTheme() {
     currentTheme = themes[themes.indexOf(currentTheme) + 1];
