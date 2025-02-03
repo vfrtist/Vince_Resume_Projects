@@ -1,0 +1,1366 @@
+/* font-family: brother-1816, sans-serif;
+font-weight: 700;
+font-style: normal;
+
+font-family: brother-1816, sans-serif;
+font-weight: 800;
+font-style: normal; */
+
+:root {
+    scroll-behavior: smooth;
+    --menu-background: white;
+    --menu-background2: #f1ebf3;
+    --menu-button: #7c787c;
+    --menu-active: #875bd8;
+    /* --menu-active: linear-gradient(90deg, rgb(135, 91, 216) 0%, rgb(196, 91, 216) 100%); */
+    --board-background: #d8ccda;
+    --container-background: white;
+    --container-shadow: #c0b6ce;
+    --container-shadow-light: #c0b6ce56;
+    --container-shadow-dark: #a29caa82;
+    --font-color: black;
+    --alert: #D7282F;
+    --accent-1: #accceb;
+    --accent-2: #7fcbb2;
+    --accent-3: #d47fb5;
+    --treasure: #875bd8;
+}
+
+[data-theme="brighter"] {
+    --menu-background2: #eadaff;
+    --board-background: #f6e9ff;
+}
+
+[data-theme="dark"] {
+    --menu-background: #26292c;
+    --menu-background2: #815e92;
+    --menu-button: #989da3;
+    --menu-active: white;
+    --board-background: #525252;
+    --container-background: #342A41;
+    --container-shadow: #312c38ce;
+    --container-shadow: #5e06afb3;
+    --container-shadow-light: #312c3856;
+    --container-shadow-dark: #40097385;
+    --font-color: white;
+}
+
+[data-theme="colorful"] {
+    --menu-background: white;
+    --menu-background2: #ddf3ff;
+    --menu-button: #767581;
+    --menu-active: #3083f0;
+    --board-background: #eec4ff8c;
+    --container-background: white;
+    --container-shadow: #bbb6ce;
+    --container-shadow-light: #bbb6ce56;
+    --container-shadow-dark: #a29caa;
+    --font-color: black;
+    --treasure: #3083f0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+input[type='text'] {
+    background: var(--menu-background);
+    color: var(--font-color);
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14pt;
+    background: var(--board-background);
+    color: var(--font-color);
+}
+
+/* --------------------------- Header ---------------------------  */
+
+header {
+    background: var(--menu-background);
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    width: 100vw;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    gap: 8px;
+    z-index: 2;
+}
+
+.leftNav,
+.rightNav,
+.centerNav {
+    display: flex;
+    height: inherit;
+    align-items: center;
+}
+
+.leftNav {
+    grid-column: 1;
+    justify-content: flex-start;
+    margin-left: 12px;
+    font-size: 28px;
+    gap: 8px;
+}
+
+.leftNav svg {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    fill: var(--menu-active);
+}
+
+.rightNav {
+    grid-column: 3;
+    justify-content: flex-end;
+    margin-right: 12px;
+}
+
+.centerNav {
+    grid-column: 2;
+    min-width: 600px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    display: none;
+}
+
+.pageLabel {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--menu-active);
+    display: inline-block;
+    z-index: 0;
+    position: fixed;
+    top: 35px;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: top .2s cubic-bezier(0.77, 0, 0.18, 1);
+
+    &.move {
+        top: 54px;
+    }
+}
+
+/* --------------------------- vv Left Bar Formatting vv ---------------------------  */
+
+.leftBar {
+    box-sizing: border-box;
+    width: 150px;
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--menu-background);
+    color: var(--menu-button);
+    fill: var(--menu-button);
+    padding: 20px 12px 12px;
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
+    left: 0;
+    transition: left .3s ease, width .3s ease;
+}
+
+.leftBar h2 {
+    font-size: 12pt;
+    padding: 8px 0;
+    margin: 0;
+}
+
+.leftBar>div {
+    padding: 0;
+    width: 100%;
+    margin-bottom: 8px;
+    border-top: 1pt solid var(--menu-background2);
+}
+
+.leftBar>div:first-of-type {
+    border: none;
+}
+
+.leftMenu {
+    display: block;
+    width: 100%;
+}
+
+.leftButton {
+    list-style-type: none;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 11pt;
+    padding: 8px;
+    border-radius: 18px;
+    transition: background .2s, outline .2s, color .2s, fill .2s, stroke .2s;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.leftButton:hover {
+    color: var(--menu-active);
+    fill: var(--menu-active);
+    cursor: pointer;
+}
+
+.leftButton.open {
+    color: var(--menu-active);
+    fill: var(--menu-active);
+    background: var(--menu-background2);
+}
+
+.bottom {
+    margin-top: auto;
+}
+
+/* ------------------------------------------------------ Card ------------------------------------------------------  */
+.card {
+    background: var(--container-background);
+    color: var(--font-color);
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 4px;
+    cursor: grab;
+    transition: border-radius .15s, box-shadow .15s, filter .15s !important;
+    margin: 0;
+    position: relative;
+}
+
+.card:has(.marker) {
+    padding: 0;
+    background: none;
+}
+
+.card:active {
+    cursor: grabbing;
+}
+
+.card.inTray {
+    will-change: filter;
+}
+
+.card:not(.inTray):hover {
+    box-shadow: 4px 4px 8px var(--container-shadow);
+}
+
+.card.inTray:hover {
+    filter: drop-shadow(4px 4px 2px var(--container-shadow));
+}
+
+.card.inTray:hover .card {
+    box-shadow: none
+}
+
+.content>.card:hover {
+    filter: drop-shadow(4px 4px 4px var(--container-shadow-dark));
+}
+
+.material {
+    font-size: 1rem;
+}
+
+.material.inTray {
+    align-items: center;
+}
+
+.bundle .material {
+    padding: 2px 8px;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.material span:first-child {
+    font-weight: 500;
+    font-family: 'Work Sans', sans-serif;
+}
+
+/* -------------------------------------------------------- Frame --------------------------------------------------------  */
+
+.frame {
+    padding: 8px 0px;
+    justify-items: center;
+    background-color: var(--container-background);
+    text-align: center;
+    gap: 0px;
+}
+
+.title {
+    margin-right: auto;
+    padding: 0px 12px;
+}
+
+.frame.bundle {
+    padding-bottom: 16px;
+}
+
+.marker {
+    --path: 0 0, 100% 0, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0 100%;
+    clip-path: polygon(var(--path));
+    transition: all .5s;
+}
+
+.marker:has(.corner:hover) {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 48px), calc(100% - 48px) 100%, 0 100%);
+    transition: all .5s;
+}
+
+.corner,
+.cornerTarget {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 32px;
+    height: auto;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}
+
+.cornerTarget {
+    background: none;
+}
+
+.corner {
+    background: var(--accent-1);
+    border-radius: 12px 0px;
+    transition: width .5s, height .5s;
+}
+
+.cornerTarget:hover {
+    width: 48px;
+}
+
+/* ------------------------------------------------------ Left Sub ------------------------------------------------------  */
+
+
+.leftSub {
+    box-sizing: border-box;
+    transition: width .3s ease, left .3s ease;
+    z-index: 0;
+    background: var(--menu-background2);
+    position: fixed;
+    bottom: 0;
+    left: 150px;
+    height: calc(100% - 50px);
+    width: 0;
+    overflow: auto;
+}
+
+.leftSub.open {
+    width: 200px;
+    padding: 20px 12px 12px;
+}
+
+.leftSub>div {
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 36px;
+}
+
+.leftSub.open>div {
+    display: flex;
+    width: 100%;
+    animation: slide-in .35s .22s backwards;
+}
+
+.leftSub ul {
+    width: 100%;
+}
+
+.piece.inTray>div:nth-last-child(1) {
+    display: none;
+}
+
+.leftSub .trayContainer {
+    border: none;
+    height: 100%;
+    border-radius: 0;
+    flex-direction: column;
+    width: 100%;
+}
+
+.leftIcon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.leftSub input[type='text'] {
+    margin: 6px 0px;
+    padding: 6px;
+    display: block;
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.leftSub input:focus {
+    outline: 1px solid var(--container-shadow)
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.search:hover {
+    fill: var(--menu-active);
+}
+
+.leftSub .search input {
+    position: relative;
+    z-index: 1;
+    padding-right: calc(18px + 1em);
+}
+
+.search svg {
+    position: absolute;
+    width: 1em;
+    z-index: 2;
+    justify-self: end;
+    padding-right: 8px;
+    transition: fill .2s;
+}
+
+.linkButton,
+.linkButton a {
+    text-align: center;
+    border-radius: 8px;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: var(--font-color);
+    padding: 3px 0px;
+    transition: all .1s;
+}
+
+.linkButton:hover,
+.linkButton a:hover {
+    color: var(--menu-active);
+    background: var(--menu-background);
+}
+
+.leftSub button {
+    border-radius: 50%;
+    background: var(--menu-background);
+    border: none;
+    outline: none;
+    font-size: 18pt;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    transition: all .2s;
+    font-weight: 800;
+    font-family: brother-1816, sans-serif;
+}
+
+.leftSub button:hover {
+    background-color: var(--menu-active);
+    color: var(--menu-background);
+    fill: var(--menu-background);
+    box-shadow: 4px 4px 10px var(--container-shadow-light);
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.inTray .typeable {
+    cursor: inherit;
+}
+
+.inTray .typeable:hover {
+    filter: none;
+}
+
+.inTray h2 {
+    margin: 0;
+    padding: 0;
+}
+
+/* --------------------------- Arrow Shenanigans ---------------------------  */
+
+.arrow {
+    display: inline-block;
+    transition: all .2s ease;
+    width: 14px;
+    margin-left: auto;
+}
+
+.leftButton:hover .arrow span {
+    background: var(--menu-active);
+    height: 3px;
+}
+
+.leftButton:hover .arrow span:nth-child(1) {
+    transform: rotate(30deg);
+}
+
+.leftButton:hover .arrow span:nth-child(2) {
+    transform: rotate(-30deg);
+}
+
+
+.leftButton.open .arrow span {
+    transform-origin: center;
+}
+
+.leftButton.open:hover .arrow span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.leftButton.open:hover .arrow span:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+.arrow span {
+    transform-origin: right;
+    width: 10px;
+    height: 1px;
+    border-radius: 2px;
+    position: absolute;
+    transition: all .2s ease;
+    background: var(--menu-button);
+}
+
+/*  --------------------------- Page Buttons ---------------------------   */
+
+.menuButton,
+.pageButton {
+    fill: var(--menu-button);
+    height: 50px;
+    background: transparent;
+    border: none;
+    transition: fill .25s, color .25s, border-top .1s;
+    text-align: center;
+    overflow: visible;
+    display: flex;
+    width: 50px;
+    position: relative;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.menuButton:hover,
+.pageButton:hover {
+    fill: var(--menu-active);
+    color: var(--menu-background);
+}
+
+.buttonIcon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    display: inline-block;
+    z-index: 1;
+}
+
+/*  --------------------------- Screen Buttons ---------------------------   */
+
+.screenButtons {
+    display: flex;
+    position: fixed;
+    bottom: 8%;
+    right: 5%;
+    flex-direction: column;
+    gap: 24px;
+    transition: right .35s ease;
+    width: 140px;
+    align-items: center;
+    text-align: center;
+}
+
+.screenButton {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    display: inline-block;
+    fill: var(--menu-button);
+    background: var(--menu-background);
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: all .2s;
+    overflow: visible;
+    opacity: .65;
+}
+
+.halves {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    margin: 0;
+    border-radius: 50%;
+}
+
+.halves .screenButton {
+    border-radius: 100% 0 0 100%/50% 0 0 50%;
+    width: 25px;
+    padding: 5px !important;
+}
+
+.halves .screenButton:last-child {
+    transform: rotate(180deg);
+}
+
+.screenButton:not(#zen) {
+    padding: 10px;
+}
+
+#zen {
+    padding: 0px;
+    overflow: hidden;
+}
+
+.screenButton:not(#trash):hover,
+.screenButton.awake {
+    fill: var(--menu-active);
+    scale: 1.08;
+    opacity: 1;
+    z-index: 3;
+}
+
+#trash>path:last-of-type {
+    transition: transform .2s;
+    transform-origin: right;
+}
+
+
+#trash.awake>path:last-of-type {
+    transform: rotate(15deg);
+}
+
+#caption.transparent {
+    opacity: 0;
+}
+
+#caption {
+    opacity: 1;
+    transition: opacity .2s;
+    user-select: none;
+}
+
+/*  --------------------------- Hover Menu ---------------------------   */
+
+.menu {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.small .subMenu {
+    left: 45px;
+}
+
+.subMenu {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    left: 100px;
+    background: var(--menu-background);
+    width: max-content;
+    z-index: 1;
+    list-style-type: none;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.subMenu :is(li, a) {
+    color: var(--font-color);
+    padding: 3px 8px;
+    display: block;
+    transition: all .1s;
+    border-radius: 4px;
+    text-decoration: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.subMenu :is(li, a):hover {
+    cursor: default;
+    background: var(--menu-background2);
+}
+
+.menu:hover .subMenu {
+    display: block;
+}
+
+/* --------------------------- JS classes ---------------------------  */
+
+.active {
+    fill: var(--menu-active);
+    color: var(--menu-active);
+    background: var(--menu-background2);
+    border-radius: 0 0 50% 50%;
+    outline: var(--menu-background) solid 4px;
+}
+
+.target .treasure>svg>path:last-of-type {
+    transform: translateY(-8px);
+}
+
+.dragging {
+    opacity: .5;
+    box-shadow: none;
+    outline: 2px solid var(--menu-active);
+    box-sizing: border-box;
+}
+
+.dragging:active {
+    cursor: grabbing;
+}
+
+.available {
+    outline: 2px dashed var(--menu-active);
+    outline-offset: -2px;
+}
+
+.ghost {
+    position: absolute;
+    left: -250px;
+    max-width: 180px;
+    opacity: 1;
+    box-shadow: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hot {
+    width: 24px;
+    height: 24px;
+    background: var(--alert);
+}
+
+.notification {
+    animation: pop-in .2s;
+    position: absolute;
+    top: -6px;
+    left: -20px;
+    border-radius: 50%;
+    color: white;
+    fill: white;
+    padding: 6px;
+    overflow: visible;
+    display: flex;
+}
+
+.leftBar.zen,
+.leftBar.zen .leftSub {
+    left: -200px;
+}
+
+.leftBar.small {
+    width: 50px;
+    padding-inline: 0;
+}
+
+.leftBar.small .subheading,
+.leftBar.small .leftButton :not(.leftIcon, path) {
+    display: none;
+}
+
+.leftBar.small .leftIcon {
+    margin-right: 0px;
+    width: 24px;
+    height: 24px;
+}
+
+.leftBar.small .leftSub {
+    left: 50px;
+}
+
+.small .leftButton {
+    border-radius: 18px 0px 0px 18px;
+    justify-content: center;
+}
+
+.screenButtons.zen {
+    right: 3%;
+}
+
+.content.zen {
+    gap: 80px;
+    margin-inline: 20%;
+}
+
+.on,
+.upload.selected {
+    opacity: 1;
+    fill: var(--menu-active);
+    outline: 2px solid var(--menu-active);
+    outline-offset: 6px;
+    animation: bubble .35s;
+}
+
+.float {
+    position: absolute;
+    display: flex;
+    right: 0px;
+    top: 0px;
+    width: 22px;
+    gap: 6px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    fill: var(--menu-active);
+    cursor: pointer;
+    z-index: 3;
+}
+
+.float svg {
+    width: 22px;
+    height: 22px;
+    transition: all .2s;
+}
+
+.float svg:hover {
+    fill: var(--menu-active);
+    scale: 1.1;
+}
+
+.float:hover {
+    fill: var(--menu-background2);
+}
+
+.flipped {
+    transform: scaleX(-1);
+}
+
+.modal::backdrop {
+    background: #00000059;
+    overflow: hidden;
+}
+
+:modal {
+    z-index: 5;
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    max-width: 60%;
+    max-height: 60%;
+    background-color: white;
+    padding: 24px;
+    object-fit: contain;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+.modal img {
+    width: 100%;
+    height: 100%;
+}
+
+/* --------------------------- Treasure Stylings which are complicated ---------------------------  */
+
+
+.treasure {
+    width: 80%;
+    display: flex;
+    transition: width .35s;
+    background: var(--treasure);
+    z-index: 1;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.treasure.closed {
+    background: var(--treasure);
+    transition: transform .2s;
+    width: 18px;
+    height: 18px;
+}
+
+.treasure:not(.closed) {
+    border-radius: 12px;
+}
+
+.treasure>svg {
+    overflow: visible;
+    width: 18px;
+    height: 18px;
+    inset: 6px;
+    transition: inset .25s;
+}
+
+.treasure:not(.closed) :not(svg, path) {
+    animation: slide-in .35s .22s backwards;
+}
+
+.card .treasure>svg>path:last-of-type {
+    transition: transform .2s;
+}
+
+.card .treasure.closed:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.treasure.open>svg>path:last-of-type,
+.card .treasure:hover>svg>path:last-of-type {
+    transform: translateY(-8px);
+}
+
+.treasure.closed :not(svg, path) {
+    display: none;
+}
+
+.treasure:not(.treasure:has(.piece, .material)) {
+    display: none;
+}
+
+.treasure.open {
+    cursor: pointer;
+    padding: 18px;
+    z-index: 2;
+}
+
+.treasure.open .card {
+    max-width: 200px;
+    min-width: 140px;
+}
+
+.treasure.open .card:hover {
+    box-shadow: none;
+}
+
+.treasure.open>svg {
+    position: absolute;
+    inset: 12px;
+}
+
+@keyframes bubble {
+    0% {
+        outline: 1px solid var(--menu-active);
+        outline-offset: -2px;
+    }
+
+    80% {
+        outline: 3px solid var(--menu-active);
+        outline-offset: 9px;
+    }
+
+    100% {
+        outline: 2px solid var(--menu-active);
+        outline-offset: 6px;
+    }
+
+}
+
+@keyframes pop-in {
+    0% {
+        transform: scale(.75)
+    }
+
+    80% {
+        transform: scale(1.15)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+
+}
+
+/* --------------------------- Bundling ---------------------------  */
+
+.content {
+    margin: 100px 15% 100px 400px;
+    padding: 18px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    transition: border .2s, gap .35s ease, margin .35s ease;
+}
+
+.cardContainer {
+    padding: 12px;
+}
+
+.trayContainer,
+.cardContainer {
+    gap: 36px;
+    box-sizing: border-box;
+    background: var(--menu-background2);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.piece {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 1rem;
+    max-width: 200px;
+    min-width: 140px;
+    transition: box-shadow .15s;
+    align-items: center;
+}
+
+.pieceCount {
+    text-align: center;
+}
+
+.pieceCount.sideline {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 12px;
+    right: -12px;
+    gap: 4px;
+}
+
+.pieceCount.sideline span {
+    background-color: var(--container-background);
+    box-shadow: 2px 2px 12px var(--container-shadow-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details .detail:first-child {
+    margin: 0 !important;
+}
+
+.detail.picture:not(.inTray) {
+    margin-top: 48px;
+}
+
+.detail.picture:not(.inTray)>.pieceFrame {
+    height: auto;
+    max-height: 250px;
+}
+
+.detail:not(.inTray)>.pieceFrame img {
+    object-fit: scale-down;
+}
+
+.pieceFrame {
+    height: 80px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    display: flex;
+}
+
+.pieceFrame.selected {
+    outline: 1px solid var(--menu-active);
+    border-color: var(--menu-active) !important;
+}
+
+.pieceFrame>svg {
+    display: none;
+}
+
+.pieceFrame input {
+    background: none;
+    border: none;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+}
+
+.upload {
+    width: 50px;
+    height: 50px;
+    background: var(--menu-background);
+    border-radius: 50%;
+    fill: var(--menu-button);
+    display: flex;
+    position: relative;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.upload input {
+    background: none;
+    border: none;
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    width: inherit;
+    height: inherit;
+}
+
+.pieceFrame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: exclusion;
+    filter: invert(100%);
+    z-index: 2;
+}
+
+.pieceFrame.unloaded {
+    background-image: url('Ears Gentle.png');
+    background-repeat: repeat;
+    background-size: 40%;
+}
+
+
+.pieceFrame.unloaded svg {
+    fill: var(--menu-active);
+    width: 30px;
+    display: block;
+}
+
+.pieceFrame.unloaded img {
+    display: none;
+}
+
+.hover {
+    box-shadow: inset 0 0 8px var(--container-shadow);
+    outline: 2px solid var(--board-background)
+}
+
+.dropdownIcon,
+.handleIcon {
+    fill: var(--board-background);
+    width: 30px;
+    align-self: flex-end;
+    position: absolute;
+    cursor: default;
+    z-index: 1;
+    margin-right: 12px;
+}
+
+.dropdownIcon:hover {
+    fill: var(--menu-active);
+}
+
+.tempPiece {
+    width: 250px;
+    transform: translate(-300px);
+}
+
+.flip,
+.up {
+    display: inline-block;
+    width: 3ch;
+}
+
+.flip {
+    border-left: 1px solid var(--board-background);
+}
+
+.inTray li span:last-of-type {
+    display: none;
+}
+
+.inTray :is(svg, .cardContainer) {
+    display: none;
+}
+
+.content>.collapsed {
+    width: 200px;
+}
+
+.collapsed .title {
+    text-align: center;
+    margin: 0;
+}
+
+.collapsed :not(.title, h2) {
+    display: none;
+}
+
+.fabrics {
+    box-sizing: border-box;
+    padding: 4px;
+    border-radius: 12px;
+    margin-bottom: 4px;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.typeable {
+    cursor: text;
+    padding: 0 4px;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+.typeable:focus {
+    outline: none;
+    background: linear-gradient(0deg, var(--menu-active) 0% 2px, rgba(255, 255, 255, 0) 2px);
+}
+
+.content .subMenu {
+    left: 0;
+    bottom: auto;
+    top: 24px;
+}
+
+/* --------------------------- Section & Details ---------------------------  */
+
+.details {
+    gap: 12px;
+    border-radius: 0;
+    padding-block: 22px;
+}
+
+.divot {
+    width: 24px;
+    align-self: center;
+    position: relative;
+}
+
+.divot:first-of-type {
+    fill: var(--container-background);
+    top: 16px;
+}
+
+.divot:last-of-type {
+    fill: var(--menu-background2);
+}
+
+/* This line is for makign the top half not have the background so it goes white pink white
+After the introduction of the chest it might be a moot point. */
+.section .components {
+    background: none;
+}
+
+/* .section .pieceFrame {
+    display: none;
+} */
+
+.handleIcon {
+    height: 100%;
+    cursor: grab;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.handleIcon svg {
+    height: 30px;
+    width: 30px;
+}
+
+.detail span {
+    max-width: 90%;
+    text-align: left;
+}
+
+.detail {
+    justify-content: center;
+}
+
+/* --------------------------- Generic Text Formatting ---------------------------  */
+.unit h2,
+.title h2 {
+    font-weight: 600;
+    font-size: 2rem;
+    text-transform: Capitalize;
+    font-family: brother-1816, sans-serif;
+    color: var(--font-color);
+    display: inline;
+}
+
+.title ul {
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 0;
+    padding-left: 24px;
+    color: var(--font-color);
+}
+
+li {
+    list-style-type: none;
+}
+
+.filler {
+    padding: 10px;
+    margin: 10px 20px;
+    text-align: center;
+    display: block;
+    font-weight: 400;
+    align-items: center;
+    justify-items: center;
+}
+
+.Material_Title {
+    width: inherit;
+    border-bottom: 2px solid #343638;
+}
+
+.Material_Container {
+    display: flex;
+    width: 420px;
+    flex-wrap: wrap;
+}
+
+.Material_Number {
+    padding: 4px;
+    width: 120px;
+    text-align: center;
+    border: none;
+    border-right: 1pt solid #343638;
+    border-radius: 1em 0 0 1em;
+    font-size: 12pt;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.Material_Number::placeholder {
+    color: #989DA3;
+}
+
+.Material_Description {
+    margin-left: 12px;
+    margin-bottom: 4px;
+    width: 260px;
+    text-align: start;
+    display: inline-block;
+}
+
+.inTray,
+.shadowed {
+    filter: drop-shadow(4px 4px 2px var(--container-shadow-light));
+}
