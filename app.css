@@ -1,3 +1,13 @@
+:root {
+    --light: #eae3d1;
+    --dark-font: #35442e;
+    --dark1: #4c3624;
+    --dark2: #895737;
+    --accent1: #dab49b;
+    --accent2: #c08552;
+    --shadow: #5e302357;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -8,20 +18,65 @@ body {
     font-family: "Cabin", sans-serif;
     box-sizing: border-box;
     font-size: 14pt;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    background: var(--light);
+    background: center / cover url(Images/pawel-czerwinski-lWBZ01XRRoI-unsplash.jpg);
+    background: center / cover url(Images/wesley-tingey-_0sEjWfAK3Q-unsplash.jpg);
+    background: center / cover url(Images/georgia-de-lotz-muN_TndU9A0-unsplash.jpg);
 }
 
 
 li {
     list-style: none;
+    margin: 20px;
+}
+
+li, a {
+    text-decoration: none;  
+}
+
+h1, h2, h3 {
+    color: var(--dark-font);
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    grid-column-start: 1;
+    background: var(--dark1);
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+
+    ul {
+        margin: 0;
+        padding:0;
+
+        li, a {
+            color: var(--accent1);
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        :is(li, a):hover {
+            color: var(--light);
+        }
+    }
 }
 
 main {
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
     width: 100%;
     height: 100dvh;
-    padding: 40px 10%;
+    padding: 15dvh 10dvw;
     overflow: scroll;
     box-sizing: border-box;
+    grid-column-start: 2;
+    scroll-behavior: smooth;
 }
 
 .page {
@@ -29,5 +84,9 @@ main {
     scroll-snap-align: center;
     width: 100%;
     height: 100%;
-    padding-top: 80px;
+    background: var(--light);
+    border-radius: 8px;
+    box-shadow: 4px 4px 20px var(--shadow);
+    margin: 20% 0px;
+    padding: 20px;
 }
