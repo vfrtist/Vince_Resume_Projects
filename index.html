@@ -9,32 +9,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Vincent Ryan Resume Projects</title>
     <!-- https://dustinjray.github.io/ -->
 </head>
 
 <body>
-    <nav>
+    <header class="container horizontal">
+        <h1 id="title">About</h1>
+    </header>
+    <nav class="container vertical">
         <ul>
-            <li><a href="#about">About</a></li>
+            <li><a href="#about" class="active">About</a></li>
             <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#interests">Interests</a></li>
         </ul>
     </nav>
     <main>
-        <div id="about" class="page">
-            <h2>About</h2>
+        <div id="about" class="page container vertical">
+            <h2>Vincent Ryan</h2>
+            <div>Orlando, FL 32819</div>
+            <div>(248) 605-5264</div>
+            <a href="mailto:vfrtist@aol.com">vfrtist@aol.com</a>
         </div>
-        <div id="experience" class="page">
-            <h2>Experience</h2>
+        <div id="experience" class="page container vertical">
+
         </div>
-        <div id="education" class="page">
-            <h2>Education</h2>
+        <div id="education" class="page container vertical">
+            <section>
+                <h2>Bellevue University</h2>
+                <h3>Bachelors of Science</h3>
+                <div>Software Development</div>
+                <div>GPA: 3.98</div>
+                <div>March 2024 - May 2025</div>
+            </section>
+            <section>
+                <h2>International Academy of Design and Technology</h2>
+                <h3>Bachelors of Arts</h3>
+                <div>Fashion Design</div>
+                <div>GPA: 4.00/span>
+                <div>2011 - 2014</div>
+            </section>
         </div>
-        <div id="projects" class="page">
-            <h2>Projects</h2>
+        <div id="projects" class="page container vertical">
             <section>
                 <h3>Python</h3>
                 <ul>
@@ -44,11 +64,11 @@
             <section>
                 <h3>Web</h3>
                 <ul>
-                    <li><a href="Web/Gym Buddy/index.html">Gym Buddy</a></li>
-                    <li><a href="Web/Artists Portfolio/index.html">Artists Portfolio</a></li>
-                    <li><a href="Web/Workflow Web App/index.html">Workflow Web App</a></li>
-                    <li><a href="Web/Score Keeper/index.html">Score Keeper</a></li>
-                    <li><a href="Web/Rep Counter/index.html">Rep Counter</a></li>
+                    <li><a target="_blank" rel="nopener noreferrer" href="Web/Gym Buddy/index.html">Gym Buddy</a></li>
+                    <li><a target="_blank" rel="nopener noreferrer" href="Web/Artists Portfolio/index.html">Artists Portfolio</a></li>
+                    <li><a target="_blank" rel="nopener noreferrer" href="Web/Workflow Web App/index.html">Workflow Web App</a></li>
+                    <li><a target="_blank" rel="nopener noreferrer" href="Web/Score Keeper/index.html">Score Keeper</a></li>
+                    <li><a target="_blank" rel="nopener noreferrer" href="Web/Rep Counter/index.html">Rep Counter</a></li>
                 </ul>
             </section>
             <section>
@@ -57,13 +77,14 @@
                 </ul>
             </section>
         </div>
-        <div id="skills" class="page">
-            <h2>Skills</h2>
+        <div id="skills" class="page container vertical">
+            
         </div>
-        <div id="interests" class="page">
-            <h2>Interests</h2>
+        <div id="interests" class="page container vertical">
+            
         </div>
     </main>
+    <script src="app.js"></script>
 </body>
 
 </html>

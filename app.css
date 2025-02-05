@@ -1,15 +1,29 @@
 :root {
-    --light: #eae3d1;
+    --light: #f6f7f3;
+    --light: #616459;
     --dark-font: #35442e;
-    --dark1: #4c3624;
-    --dark2: #895737;
-    --accent1: #dab49b;
-    --accent2: #c08552;
-    --shadow: #5e302357;
+    --light-font: #cec6c0;
+    --dark1: #47372a;
+    --accent1: #aed590;
+    --accent2: #82ab63;
+    --shadow: #484e3647;
 }
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.horizontal {
+    flex-direction: row;
 }
 
 body {
@@ -19,11 +33,9 @@ body {
     box-sizing: border-box;
     font-size: 14pt;
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid: 20dvh 1fr / 240px 1fr;
     background: var(--light);
-    background: center / cover url(Images/pawel-czerwinski-lWBZ01XRRoI-unsplash.jpg);
-    background: center / cover url(Images/wesley-tingey-_0sEjWfAK3Q-unsplash.jpg);
-    background: center / cover url(Images/georgia-de-lotz-muN_TndU9A0-unsplash.jpg);
+    height: 100dvh;
 }
 
 
@@ -33,48 +45,50 @@ li {
 }
 
 li, a {
-    text-decoration: none;  
+    text-decoration: none;
+    color: var(--light-font);
+    transition: all .15s;
 }
 
 h1, h2, h3 {
-    color: var(--dark-font);
+    font-family: "Noto Sans", serif;
     margin: 0;
     padding: 0;
 }
 
 nav {
+    grid-row-start: 2;
     grid-column-start: 1;
-    background: var(--dark1);
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 8px;
     justify-content: center;
+    height: 100%;
+    box-shadow: 4px 0px 20px var(--shadow);
 
     ul {
         margin: 0;
         padding:0;
 
         li, a {
-            color: var(--accent1);
+            color: var(--light-font);
             font-size: 1.25rem;
-            text-align: center;
-        }
-
-        :is(li, a):hover {
-            color: var(--light);
+            text-align: center; 
         }
     }
 }
 
+:is(li, a):hover {
+    color: var(--accent2);
+}
+
 main {
+    z-index: 0;
     scroll-snap-type: y proximity;
     width: 100%;
-    height: 100dvh;
-    padding: 15dvh 10dvw;
+    height: 80dvh;
+    padding: 20px 10dvw;
     overflow: scroll;
     box-sizing: border-box;
+    grid-row-start: 2;
     grid-column-start: 2;
     scroll-behavior: smooth;
 }
@@ -86,7 +100,43 @@ main {
     height: 100%;
     background: var(--light);
     border-radius: 8px;
-    box-shadow: 4px 4px 20px var(--shadow);
     margin: 20% 0px;
     padding: 20px;
+    align-items: flex-start;
+    justify-content: center;
+    color: var(--light-font);
+    gap: 4px;
+
+    h2 {
+        font-size: 52px;
+        margin-bottom: 20px;
+        color: var(--accent1);
+    }
 }
+
+.page:first-of-type {
+    margin-top: 0;
+}
+
+.page:last-of-type {
+    margin-bottom: 0;
+}
+
+.active {
+    color: var(--accent1);
+    fill: var(--accent1);
+}
+
+header {
+    width: 100dvw;
+    height: 20dvh;
+    background: center / cover url(Images/georgia-de-lotz-muN_TndU9A0-unsplash.jpg);
+    z-index: 1;
+    grid-row-start: 1;
+}
+
+#title {
+    margin-left: 80px;
+    color: var(--dark-font);
+}
+
