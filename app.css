@@ -1,6 +1,6 @@
 :root {
     --light: #f6f7f3;
-    --light: #616459;
+    --base: #53554e;
     --dark-font: #35442e;
     --light-font: #cec6c0;
     --dark1: #47372a;
@@ -34,7 +34,7 @@ body {
     font-size: 14pt;
     display: grid;
     grid: 20dvh 1fr / 240px 1fr;
-    background: var(--light);
+    background: var(--base);
     height: 100dvh;
 }
 
@@ -66,12 +66,12 @@ nav {
 
     ul {
         margin: 0;
-        padding:0;
+        padding: 0;
 
         li, a {
             color: var(--light-font);
             font-size: 1.25rem;
-            text-align: center; 
+            text-align: center;
         }
     }
 }
@@ -98,8 +98,6 @@ main {
     scroll-snap-align: center;
     width: 100%;
     height: 100%;
-    background: var(--light);
-    border-radius: 8px;
     margin: 20% 0px;
     padding: 20px;
     align-items: flex-start;
@@ -139,4 +137,3 @@ header {
     margin-left: 80px;
     color: var(--dark-font);
 }
-
