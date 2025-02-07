@@ -1,6 +1,6 @@
 :root {
     --light: #f6f7f3;
-    --base: #53554e;
+    --base: #434540;
     --dark-font: #35442e;
     --light-font: #cec6c0;
     --dark1: #47372a;
@@ -47,10 +47,10 @@ li {
 li, a {
     text-decoration: none;
     color: var(--light-font);
-    transition: all .15s;
+    transition: all .1s;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: "Noto Sans", serif;
     margin: 0;
     padding: 0;
@@ -103,12 +103,22 @@ main {
     align-items: flex-start;
     justify-content: center;
     color: var(--light-font);
-    gap: 4px;
+    gap: 20px;
 
     h2 {
         font-size: 52px;
-        margin-bottom: 20px;
         color: var(--accent1);
+    }
+
+    h3 {
+        font-size: 36px;
+        color: var(--accent1);
+    }
+    h4 {
+        font-size: 24px;
+    }
+    div {
+        margin: 4px 0px;
     }
 }
 
@@ -135,5 +145,16 @@ header {
 
 #title {
     margin-left: 80px;
+    font-weight: 400;
+    font-size: 44px;
     color: var(--dark-font);
+}
+
+.head {
+    justify-content: space-between;
+    width: 100%;
+}
+
+section {
+    width: 100%;
 }
