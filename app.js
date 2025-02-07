@@ -38,8 +38,6 @@ for (let index = 0; index < pageButtons.length; index++) {
 
 main.addEventListener('scroll', (e) => {
     const height = e.target.clientHeight
-    console.log(height)
-    console.log('scroll\n')
     for(let page of pages) {
         if (0 < page.top  && page.top < height) {
             page.makeActive()

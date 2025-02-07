@@ -158,3 +158,13 @@ header {
 section {
     width: 100%;
 }
+
+.icon {
+    height: 24px;
+    fill: var(--light-font);
+}
+
+.line {
+    justify-content: space-between;
+    width: min(400px, 100%);
+}
