@@ -47,7 +47,7 @@ li {
 li, a {
     text-decoration: none;
     color: var(--light-font);
-    transition: all .1s;
+    transition: all .15s;
 }
 
 h1, h2, h3, h4 {
@@ -162,6 +162,11 @@ section {
 .icon {
     height: 24px;
     fill: var(--light-font);
+    transition: all .15s;
+}
+
+.icon:hover {
+    fill: var(--accent2);
 }
 
 .line {
