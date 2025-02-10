@@ -54,10 +54,22 @@ li, a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Noto Sans", serif;
     margin: 0;
     padding: 0;
     transition: all .15s;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Noto Sans", serif;
+}
+
+h4 {
+    font-weight: 800;
+}
+
+h5 {
+    font-weight: 200;
+    margin: 2px 0px 6px;
 }
 
 nav {
@@ -93,7 +105,7 @@ main {
     scroll-snap-type: y proximity;
     width: 100%;
     height: 80dvh;
-    padding: 20px 10dvw;
+    padding: 20px 10dvw 20px 5dvw;
     overflow: scroll;
     box-sizing: border-box;
     grid-row-start: 2;
@@ -179,6 +191,10 @@ section {
     fill: var(--accent2);
 }
 
+.icon svg {
+    width: 100%;
+    height: 100%;
+}
 
 
 .line:has(.icon:hover) h4 {
@@ -187,11 +203,13 @@ section {
 
 .icons {
     gap: 20px;
+    width: 100px;
+    justify-content: flex-end;
 }
 
 .line {
     justify-content: space-between;
-    width: min(650px, 100%);
+    gap: 20px;
 }
 
 .line>.container {
@@ -200,4 +218,8 @@ section {
 
 section ul li:first-child {
     margin-top: 0px;
+}
+
+.page h5+div {
+    margin-left: 20px;
 }
