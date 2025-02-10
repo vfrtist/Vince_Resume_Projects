@@ -38,10 +38,13 @@ body {
     height: 100dvh;
 }
 
+ul {
+    margin-top: 0;
+}
 
 li {
     list-style: none;
-    margin: 20px;
+    margin: 8px 0px;
 }
 
 li, a {
@@ -54,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Noto Sans", serif;
     margin: 0;
     padding: 0;
+    transition: all .15s;
 }
 
 nav {
@@ -73,10 +77,14 @@ nav {
             font-size: 1.25rem;
             text-align: center;
         }
+
+        li {
+            margin: 20px 0px;
+        }
     }
 }
 
-:is(li, a):hover {
+nav :is(li, a):hover {
     color: var(--accent2);
 }
 
@@ -114,9 +122,11 @@ main {
         font-size: 36px;
         color: var(--accent1);
     }
+
     h4 {
         font-size: 24px;
     }
+
     div {
         margin: 4px 0px;
     }
@@ -169,7 +179,25 @@ section {
     fill: var(--accent2);
 }
 
+
+
+.line:has(.icon:hover) h4 {
+    color: var(--accent2);
+}
+
+.icons {
+    gap: 20px;
+}
+
 .line {
     justify-content: space-between;
-    width: min(400px, 100%);
+    width: min(650px, 100%);
+}
+
+.line>.container {
+    align-items: flex-start;
+}
+
+section ul li:first-child {
+    margin-top: 0px;
 }
