@@ -55,8 +55,10 @@ function isValidWidth() {
 
 webLinks.forEach(button => {
     button.addEventListener('click', (e)=> {
-        e.preventDefault()
         const button  = e.target.closest('a')
+        if (!isValidWidth() && button.getAttribute('value') == 'desktop') {
+        } else {
+        e.preventDefault()
         const title = e.target.closest('.line').querySelector('h4').innerHTML
         const modal = make('dialog')
         const frame = make('iframe')
@@ -71,5 +73,6 @@ webLinks.forEach(button => {
         document.body.append(modal)
         modal.showModal()
         modal.addEventListener('click', () => { modal.remove()})
+        }
     })
 });
