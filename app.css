@@ -186,11 +186,6 @@ header {
     color: var(--dark-font);
 }
 
-
-/* #education .head span {
-    width: 10ch;
-} */
-
 .head {
     justify-content: space-between;
     width: 100%;
@@ -322,6 +317,12 @@ section ul li:first-child {
 
     header {
         grid-column: 1;
+        background-position: bottom;
+    }
+    
+    .page {
+        height: auto;
+        min-height: 100%;
     }
 }
 
