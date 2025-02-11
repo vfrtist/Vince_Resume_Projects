@@ -26,6 +26,10 @@
     flex-direction: row;
 }
 
+.italics {
+    font-style: italic;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -39,7 +43,7 @@ body {
 }
 
 ul {
-    margin-top: 0;
+    margin: 0;
 }
 
 li {
@@ -70,6 +74,8 @@ h4 {
 h5 {
     font-weight: 200;
     margin: 2px 0px 6px;
+    font-size: 18px;
+    font-style: italic;
 }
 
 nav {
@@ -104,7 +110,7 @@ main {
     z-index: 0;
     scroll-snap-type: y proximity;
     width: 100%;
-    height: 80dvh;
+    height: 100%;
     padding: 20px 10dvw 20px 5dvw;
     overflow: scroll;
     box-sizing: border-box;
@@ -157,12 +163,20 @@ main {
     fill: var(--accent1);
 }
 
+.active::before {
+    width: 1cap;
+    height: 1cap;
+    background-color: var(--accent1);
+    border-radius: 50%;
+}
+
 header {
-    width: 100dvw;
-    height: 20dvh;
+    width: 100%;
+    height: 100%;
     background: center / cover url(Images/georgia-de-lotz-muN_TndU9A0-unsplash.jpg);
     z-index: 1;
-    grid-row-start: 1;
+    grid-row: 1;
+    grid-column: 1 / 3;
 }
 
 #title {
@@ -172,9 +186,19 @@ header {
     color: var(--dark-font);
 }
 
+
+/* #education .head span {
+    width: 10ch;
+} */
+
 .head {
     justify-content: space-between;
     width: 100%;
+
+    span {
+        text-align: right;
+        width: 20ch;
+    }
 }
 
 section {
@@ -201,12 +225,6 @@ section {
     color: var(--accent2);
 }
 
-.icons {
-    gap: 20px;
-    width: 100px;
-    justify-content: flex-end;
-}
-
 .line {
     justify-content: space-between;
     gap: 20px;
@@ -216,10 +234,108 @@ section {
     align-items: flex-start;
 }
 
+.line div {
+    margin: 0px;
+}
+
+.line .variable {
+    align-items: flex-start;
+}
+
+.variable+div {
+    margin-left: 20px;
+}
+
+.icons {
+    gap: 20px;
+    width: 100px;
+    justify-content: flex-end;
+}
+
+.variable {
+    flex-direction: column;
+}
+
 section ul li:first-child {
     margin-top: 0px;
 }
 
-.page h5+div {
-    margin-left: 20px;
+@media screen and (max-height: 900px) {
+    .line {
+        .variable {
+            flex-direction: row;
+            gap: .5ch;
+            align-items: flex-end;
+            margin-bottom: 4px;
+        }
+
+        h5::before {
+            content: " - ";
+        }
+
+        .variable h5 {
+            margin: 0px;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    body {
+        grid-template-columns: 15dvw 1fr;
+    }
+}
+
+
+@media (max-width: 950px) {
+    body {
+        grid: 20dvh 4dvh 1fr / none;
+    }
+
+    nav {
+        grid-column: 1;
+        grid-row-start: 2;
+        flex-direction: row !important;
+        background: var(--base);
+        z-index: 2;
+        padding: 8px;
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            height: 100%;
+        }
+    }
+
+    main {
+        grid-column: 1;
+        grid-row-start: 3;
+        padding: 20px 5dvw;
+    }
+
+    #title {
+        margin-left: 5dvw;
+    }
+
+    header {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 590px) {
+    body {
+        grid: 20dvh 1fr / none;
+    }
+
+    nav {
+        display: none !important;
+    }
+
+    main {
+        grid-row-start: 2;
+        scroll-snap-type: none;
+    }
 }
