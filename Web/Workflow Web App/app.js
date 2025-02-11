@@ -180,7 +180,7 @@ class pictureMenu {
     buildMenu() {
         this.menu = make('div');
         this.menu.classList.add('float');
-        // this.fillMenu();
+        this.fillMenu();
         let buttons = this.menu.querySelectorAll('svg');
         for (let button of buttons) {
             button.addEventListener('click', (e) => { this[e.target.closest('svg').dataset.name](); })
@@ -443,6 +443,4 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'z' && e.ctrlKey === true) { e.shiftKey ? readHistory('redo') : readHistory('undo') };
 })
 
-// JSON Test ***************************************************************************************************
-
-// import { icons } from "./icons.js";
+import { icons } from "./icons.js";

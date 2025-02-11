@@ -1,15 +1,15 @@
-// The event is a scroll listener
-// As the Y value reaches some sort of point, update the matching nav styling.
-// That's it.
-// Since the scroll event with the menu will trigger the scroll event the class visuals accordingly
-
 const title = document.querySelector('#title')
 const pageButtons = document.querySelectorAll('nav li a')
 const pageElements = document.querySelectorAll('.page')
 const main = document.querySelector('main')
 let currentPage = document.querySelector('.active')
-
 let pages = [];
+
+//=============== Functions ====================
+
+function make(item) { return document.createElement(item.toString()); }
+
+//=============== Scrolling ====================
 
 class pageClass {
     constructor (button, page) {
@@ -45,3 +45,31 @@ main.addEventListener('scroll', (e) => {
         } else { page.makeInactive() }
     }
 })
+
+//=============== WebOpener ====================
+const webLinks = document.querySelectorAll('.web')
+
+function isValidWidth() {
+    return window.innerWidth > 850
+}
+
+webLinks.forEach(button => {
+    button.addEventListener('click', (e)=> {
+        e.preventDefault()
+        const button  = e.target.closest('a')
+        const title = e.target.closest('.line').querySelector('h4').innerHTML
+        const modal = make('dialog')
+        const frame = make('iframe')
+        const newTitle = make('h4')
+
+        modal.classList.add(button.getAttribute('value'))
+        frame.src = button.href
+        newTitle.innerHTML = title
+        
+        modal.append(newTitle)
+        modal.append(frame)
+        document.body.append(modal)
+        modal.showModal()
+        modal.addEventListener('click', () => { modal.remove()})
+    })
+});

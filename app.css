@@ -7,6 +7,7 @@
     --accent1: #aed590;
     --accent2: #82ab63;
     --shadow: #484e3647;
+    --backdrop: hsla(75, 0%, 26%, 0.278);
 }
 
 ::-webkit-scrollbar {
@@ -127,7 +128,7 @@ main {
     margin: 20% 0px;
     padding: 20px;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-evenly;
     color: var(--light-font);
     gap: 20px;
 
@@ -255,6 +256,48 @@ section ul li:first-child {
     margin-top: 0px;
 }
 
+#tagline {
+    margin-top: 20px;
+}
+
+dialog {
+    border: none;
+    background: var(--light);
+    padding: 20px;
+    border-radius: 32px;
+    display: grid;
+    grid-template-rows: 40px 1fr;
+    gap: 4px;
+    box-shadow: 4px 4px 20px var(--shadow);
+    box-sizing: border-box;
+
+    iframe {
+        border-radius: 12px;
+        height: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    h4 {
+        font-size: 24px;
+        color: var(--dark-font);
+    }
+}
+
+dialog.mobile {
+    width: 450px;
+    height: min(900px, 90dvh);
+}
+
+dialog.desktop {
+    width: max(1100px, 80dvw);
+    height: 80dvh;
+}
+
+dialog::backdrop {
+    background: var(--backdrop);
+}
+
 @media screen and (max-height: 900px) {
     .line {
         .variable {
@@ -323,6 +366,16 @@ section ul li:first-child {
     .page {
         height: auto;
         min-height: 100%;
+    }
+
+    dialog.desktop {
+        width: 100dvw;
+        padding: 20px 0px;
+        margin: 0px;
+
+        h4 {
+            margin-left: 20px;
+        }
     }
 }
 
