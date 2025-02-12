@@ -1,9 +1,9 @@
 :root {
     --light: #f6f7f3;
     --base: #434540;
-    --dark-font: #35442e;
+    --dark-font1: #35442e;
+    --dark-font2: #2b2928;
     --light-font: #cec6c0;
-    --dark1: #47372a;
     --accent1: #aed590;
     --accent2: #82ab63;
     --shadow: #484e3647;
@@ -184,7 +184,7 @@ header {
     margin-left: 80px;
     font-weight: 400;
     font-size: 44px;
-    color: var(--dark-font);
+    color: var(--dark-font1);
 }
 
 .head {
@@ -262,7 +262,7 @@ section ul li:first-child {
 
 dialog {
     border: none;
-    background: var(--light);
+    background: var(--light-font);
     padding: 20px;
     border-radius: 32px;
     display: grid;
@@ -270,6 +270,9 @@ dialog {
     gap: 4px;
     box-shadow: 4px 4px 20px var(--shadow);
     box-sizing: border-box;
+    resize: horizontal;
+    position: relative;
+    overflow: visible;
 
     iframe {
         border-radius: 12px;
@@ -280,11 +283,37 @@ dialog {
 
     h4 {
         font-size: 24px;
-        color: var(--dark-font);
+        color: var(--dark-font2);
+    }
+
+    .draggable {
+        position: absolute;
+        width: 4px;
+        height: 40%;
+        right: -20px;
+        top: 30%;
+        background: var(--accent1);
+        border-radius: 2px;
+        cursor: col-resize;
+        z-index: 2;
+    }
+
+    span {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        color: var(--dark-font2);
+        transition: all .2s;
+        cursor: pointer;
+        font-weight: 900;
+    }
+
+    span:hover {
+        color: var(--accent2);
     }
 }
 
-dialog.mobile {
+dialog.mobile, dialog.dynamic {
     width: 450px;
     height: min(900px, 90dvh);
 }
@@ -296,6 +325,10 @@ dialog.desktop {
 
 dialog::backdrop {
     background: var(--backdrop);
+}
+
+#about {
+    justify-content: center;
 }
 
 @media screen and (max-height: 900px) {
