@@ -64,6 +64,7 @@ class Popup {
         this.href = target.closest('a').href
         this.close = make('span')
         this.dragBar;
+        this.width;
 
         this.setup()
     }
@@ -77,9 +78,7 @@ class Popup {
         frame.src = this.href
         newTitle.innerHTML = this.title
 
-        this.container.append(newTitle)
-        this.container.append(frame)
-        this.container.append(this.close)
+        this.container.append(newTitle, frame, this.close)
         document.body.append(this.container)
 
         this.close.addEventListener('click', () => { 
@@ -95,7 +94,16 @@ class Popup {
 
     makeDynamic() {
         this.dragBar = make('div')
-        this.dragBar.classList.add('draggable')
+        this.dragBar.classList.add('draggable', 'container', 'horizontal')
+        const l = make('div')
+        const c = make('div')
+        const r = make('div')
+        l.classList.add('l')
+        c.classList.add('c')
+        r.classList.add('r')
+
+        this.dragBar.append(l, c, r)
+
         this.container.append(this.dragBar)
 
         this.dragBar.addEventListener('mousedown', (e) => {
@@ -106,33 +114,24 @@ class Popup {
         window.addEventListener('mousemove', (e) => {
             if (this.isResizing) {
                 e.preventDefault()
-                this.resize(e.clientX)
+                this.resize(e)
             }
         })
-        
-        this.dragBar.addEventListener('touchstart', (e) => {
-            e.preventDefault()
-            this.startSize()
-        })        
-        window.addEventListener('touchend', () => {this.stopSize()})
-        window.addEventListener('touchmove', (e) => {
-            if (this.isResizing) {
-                e.preventDefault()
-                this.resize(e.clientX)
-            }
-        })
-
     }
 
     startSize() {
         this.isResizing = true
+        this.width = this.container.offsetWidth
     }
 
     stopSize() {
         this.isResizing = false
     }
 
-    resize(val) {    this.container.style.width = `${window.innerWidth - 2*(window.innerWidth - val + 20)}px`    }
+    resize(target) {
+        this.width += target.movementX*2
+        this.container.style.width = `${this.width}px`
+    }
 }
 
 webLinks.forEach(button => {
