@@ -530,4 +530,23 @@ dialog::backdrop {
         margin-bottom: 20px;
     }
 
+    .draggable {
+        display: none;
+    }
+
+    dialog {
+        padding: 20px 0px;
+        box-shadow: none;
+
+        span {
+            top: 24px;
+            right: 10px;
+            font-size: 24px;
+        }
+    }
+    dialog::backdrop {
+        background: var(--light-font);
+    }
+    
+
 }
