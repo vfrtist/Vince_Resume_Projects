@@ -57,13 +57,13 @@ li {
 li, a {
     text-decoration: none;
     color: var(--light-font);
-    transition: all .15s;
+    transition: all .2s;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
-    transition: all .15s;
+    transition: all .2s;
 }
 
 h1, h2, h3, h4 {
@@ -140,7 +140,7 @@ main {
     }
 
     h3 {
-        font-size: 36px;
+        font-size: 32px;
         color: var(--accent1);
     }
 
@@ -162,8 +162,8 @@ main {
 }
 
 .active {
-    color: var(--accent1);
-    fill: var(--accent1);
+    color: var(--accentBright);
+    fill: var(--accentBright);
 }
 
 .active::before {
@@ -207,10 +207,10 @@ section {
 .icon {
     height: 24px;
     fill: var(--light-font);
-    transition: all .15s;
+    transition: all .2s;
 }
 
-.icon:hover {
+#projects .icon:hover {
     fill: var(--accent2);
 }
 
@@ -390,9 +390,43 @@ dialog::backdrop {
     .bar {
         align-items: flex-start;
     }
+
+    .hollow {
+        fill: var(--base);
+    }
 }
 
+#download {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 48px;
 
+    .icon {
+        width: 32px;
+        height: 32px;
+        transition: all .2s;
+        padding: 8px;
+        background-color: var(--light-font);
+        fill: var(--base);
+        padding: 8px;
+        border-radius: 50%;
+        margin-bottom: 8px;
+    }
+
+    div {
+        transition: all .2s;
+    }
+}
+
+#download a:hover {
+    .icon {
+        background-color: var(--accentBright);
+        fill: var(--base);
+    }
+    div {
+        color: var(--accentBright);
+    }
+}
 
 @media screen and (max-height: 900px) {
     .line {
@@ -473,6 +507,10 @@ dialog::backdrop {
             margin-left: 20px;
         }
     }
+
+    #download {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 590px) {
@@ -547,6 +585,4 @@ dialog::backdrop {
     dialog::backdrop {
         background: var(--light-font);
     }
-    
-
 }
