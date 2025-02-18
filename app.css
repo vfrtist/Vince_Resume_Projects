@@ -1,6 +1,6 @@
 :root {
     --light: #f6f7f3;
-    --base: #434540;
+    --base: #3e403b;
     --dark-font1: #35442e;
     --dark-font2: #2b2928;
     --light-font: #cec6c0;
@@ -9,7 +9,7 @@
     --accent2: #82ab63;
     --shadow: #484e3647;
     --backdrop: hsla(75, 0%, 26%, 0.278);
-    --gradient: linear-gradient(-90deg, rgba(130,171,99,1) 25%, rgba(174,213,144,.85) 100%)
+    --gradient: linear-gradient(-90deg, rgba(130, 171, 99, 1) 25%, rgba(174, 213, 144, .85) 100%)
 }
 
 ::-webkit-scrollbar {
@@ -126,7 +126,8 @@ main {
     box-sizing: border-box;
     scroll-snap-align: center;
     width: 100%;
-    height: 100%;
+    height: auto;
+    min-height: 100%;
     margin: 20% 0px;
     padding: 20px;
     align-items: flex-start;
@@ -298,7 +299,7 @@ dialog {
         cursor: col-resize;
         z-index: 2;
         justify-content: space-between;
-        
+
         div {
             background: var(--accentBright);
         }
@@ -306,7 +307,7 @@ dialog {
         .l, .r {
             width: 8px;
             height: 8px;
-            clip-path: polygon(0 50%,100% 100%,100% 0);
+            clip-path: polygon(0 50%, 100% 100%, 100% 0);
         }
 
         .r {
@@ -370,7 +371,7 @@ dialog::backdrop {
             background: var(--accent2);
             background: var(--gradient);
             height: 100%;
-            position:absolute;
+            position: absolute;
             inset: 0;
             margin: 0;
             border-radius: 4px;
@@ -423,6 +424,7 @@ dialog::backdrop {
         background-color: var(--accentBright);
         fill: var(--base);
     }
+
     div {
         color: var(--accentBright);
     }
@@ -492,7 +494,7 @@ dialog::backdrop {
         grid-column: 1;
         background-position: bottom;
     }
-    
+
     .page {
         height: auto;
         min-height: 100%;
@@ -534,7 +536,7 @@ dialog::backdrop {
             margin-bottom: 8px;
             text-align: left !important;
             align-items: flex-start;
-            
+
             h3 {
                 font-size: 28px;
                 text-align: left;
@@ -554,7 +556,7 @@ dialog::backdrop {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .line .icons {
         flex-direction: column;
         align-items: flex-end;
@@ -563,7 +565,7 @@ dialog::backdrop {
             height: 30px;
         }
     }
-    
+
     .line {
         margin-bottom: 20px;
     }
@@ -582,6 +584,7 @@ dialog::backdrop {
             font-size: 24px;
         }
     }
+
     dialog::backdrop {
         background: var(--light-font);
     }
