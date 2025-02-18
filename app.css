@@ -9,7 +9,8 @@
     --accent2: #82ab63;
     --shadow: #484e3647;
     --backdrop: hsla(75, 0%, 26%, 0.278);
-    --gradient: linear-gradient(-90deg, rgba(130, 171, 99, 1) 25%, rgba(174, 213, 144, .85) 100%)
+    --gradient: linear-gradient(-90deg, rgba(130, 171, 99, 1) 25%, rgba(174, 213, 144, .85) 100%);
+    --top: 10dvh;
 }
 
 ::-webkit-scrollbar {
@@ -40,13 +41,15 @@ body {
     box-sizing: border-box;
     font-size: 14pt;
     display: grid;
-    grid: 20dvh 1fr / 240px 1fr;
+    grid: calc(15dvh + var(--top)) 1fr / 240px 1fr;
     background: var(--base);
     height: 100dvh;
+    transition: grid .5s;
 }
 
 ul {
     margin: 0;
+    padding: 0;
 }
 
 li {
@@ -211,8 +214,13 @@ section {
     transition: all .2s;
 }
 
-#projects .icon:hover {
-    fill: var(--accent2);
+#projects {
+    .icon:hover {
+        fill: var(--accent2);
+    }
+    h3 {
+        border-bottom: 1px solid var(--accent2);
+    }
 }
 
 .icon svg {
@@ -451,14 +459,14 @@ dialog::backdrop {
 
 @media (max-width: 1200px) {
     body {
-        grid-template-columns: 15dvw 1fr;
+        grid-template-columns: calc(15dvh + var(--top)) 1fr;
     }
 }
 
 
 @media (max-width: 950px) {
     body {
-        grid: 20dvh 4dvh 1fr / none;
+        grid: calc(15dvh + var(--top)) 4dvh 1fr / none;
     }
 
     nav {
@@ -517,7 +525,7 @@ dialog::backdrop {
 
 @media (max-width: 590px) {
     body {
-        grid: 20dvh 1fr / none;
+        grid: calc(15dvh + var(--top)) 1fr / none;
     }
 
     nav {
@@ -546,10 +554,6 @@ dialog::backdrop {
                 text-align: left;
             }
         }
-    }
-
-    ul {
-        padding: 0;
     }
 
     .line .variable {

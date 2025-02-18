@@ -3,13 +3,24 @@ const pageButtons = document.querySelectorAll('nav li a')
 const pageElements = document.querySelectorAll('.page')
 const main = document.querySelector('main')
 let currentPage = document.querySelector('.active')
-let pages = [];
+let pages = new Map();
 
 //=============== Functions ====================
 
 function make(item) { return document.createElement(item.toString()); }
 
 //=============== Scrolling ====================
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            pages.get(entry.target).makeActive()
+        } else {
+            pages.get(entry.target).makeInactive()
+        }})
+        },
+    {threshold: 0.2}
+)
 
 class pageClass {
     constructor (button, page) {
@@ -33,16 +44,20 @@ class pageClass {
 }
 
 for (let index = 0; index < pageButtons.length; index++) {
-    pages.push(new pageClass(pageButtons[index], pageElements[index]))
+    const page = new pageClass(pageButtons[index], pageElements[index])
+    pages.set(page.page, page)
+    observer.observe(page.page)
 }
 
 main.addEventListener('scroll', (e) => {
-    const height = e.target.clientHeight
-    for(let page of pages) {
-        if (0 < page.top  && page.top < height) {
-            page.makeActive()
-            break
-        } else { page.makeInactive() }
+    const topHeight = document.documentElement
+    if (e.target.scrollTop == 0) {
+        topHeight.style.setProperty('--top', "10dvh")
+    }
+    else if (e.target.scrollTop < 380 ) {
+        topHeight.style.setProperty('--top', `${10 - (e.target.scrollTop/38)}dvh`)
+    } else {
+        topHeight.style.setProperty('--top', "0dvh")
     }
 })
 
