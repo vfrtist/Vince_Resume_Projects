@@ -218,6 +218,7 @@ section {
     .icon:hover {
         fill: var(--accent2);
     }
+
     h3 {
         border-bottom: 1px solid var(--accent2);
     }
@@ -459,7 +460,7 @@ dialog::backdrop {
 
 @media (max-width: 1200px) {
     body {
-        grid-template-columns: calc(15dvh + var(--top)) 1fr;
+        grid-template-columns: 15dvw 1fr;
     }
 }
 
