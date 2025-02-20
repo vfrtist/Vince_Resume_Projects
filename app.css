@@ -9,8 +9,14 @@
     --accent2: #82ab63;
     --shadow: #484e3647;
     --backdrop: hsla(75, 0%, 26%, 0.278);
-    --gradient: linear-gradient(-90deg, rgba(130, 171, 99, 1) 25%, rgba(174, 213, 144, .85) 100%);
+    --skill: linear-gradient(-90deg, rgba(130, 171, 99, 1) 25%, rgba(174, 213, 144, .85) 100%);
     --top: 10dvh;
+
+    --p1: #7a836e;
+    --p2: #b5b8ac;
+    --p3: #d1d0c8;
+    --p4: #e4e5e0;
+    --p5: #eaebe6;
 }
 
 ::-webkit-scrollbar {
@@ -97,7 +103,7 @@ nav {
         padding: 0;
 
         li, a {
-            color: var(--light-font);
+            color: var(--p2);
             font-size: 1.25rem;
             text-align: center;
         }
@@ -136,6 +142,7 @@ main {
     align-items: flex-start;
     justify-content: space-evenly;
     color: var(--light-font);
+    /* color: var(--p4); */
     gap: 20px;
 
     h2 {
@@ -149,6 +156,7 @@ main {
     }
 
     h4 {
+        color: var(--p4);
         font-size: 24px;
     }
 
@@ -166,8 +174,8 @@ main {
 }
 
 .active {
-    color: var(--accentBright);
-    fill: var(--accentBright);
+    color: var(--p5);
+    fill: var(--p5);
 }
 
 .active::before {
@@ -210,7 +218,7 @@ section {
 
 .icon {
     height: 24px;
-    fill: var(--light-font);
+    fill: var(--p4);
     transition: all .2s;
 }
 
@@ -220,7 +228,7 @@ section {
     }
 
     h3 {
-        border-bottom: 1px solid var(--accent2);
+        border-bottom: 1px solid var(--accent1);
     }
 }
 
@@ -370,7 +378,7 @@ dialog::backdrop {
     .progress {
         width: 100%;
         height: 20px;
-        background: var(--light-font);
+        background: var(--p3);
         position: relative;
         margin: 0;
         border-radius: 4px;
@@ -378,7 +386,7 @@ dialog::backdrop {
         div {
             width: var(--value);
             background: var(--accent2);
-            background: var(--gradient);
+            background: var(--skill);
             height: 100%;
             position: absolute;
             inset: 0;
@@ -424,6 +432,7 @@ dialog::backdrop {
     }
 
     div {
+        color: var(--light-font);
         transition: all .2s;
     }
 }

@@ -2,6 +2,7 @@ const title = document.querySelector('#title')
 const pageButtons = document.querySelectorAll('nav li a')
 const pageElements = document.querySelectorAll('.page')
 const main = document.querySelector('main')
+const body = document.querySelector('body')
 let currentPage = document.querySelector('.active')
 let pages = new Map();
 
@@ -19,7 +20,7 @@ const observer = new IntersectionObserver((entries) => {
             pages.get(entry.target).makeInactive()
         }})
         },
-    {threshold: 0.2}
+    {threshold: 0.15}
 )
 
 class pageClass {
@@ -51,10 +52,7 @@ for (let index = 0; index < pageButtons.length; index++) {
 
 main.addEventListener('scroll', (e) => {
     const topHeight = document.documentElement
-    if (e.target.scrollTop == 0) {
-        topHeight.style.setProperty('--top', "10dvh")
-    }
-    else if (e.target.scrollTop < 380 ) {
+    if (e.target.scrollTop < 380 ) {
         topHeight.style.setProperty('--top', `${10 - (e.target.scrollTop/38)}dvh`)
     } else {
         topHeight.style.setProperty('--top', "0dvh")
