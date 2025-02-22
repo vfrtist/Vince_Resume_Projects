@@ -199,6 +199,7 @@ header {
     font-weight: 400;
     font-size: 44px;
     color: var(--dark-font1);
+    mix-blend-mode: multiply;
 }
 
 .head {
@@ -385,13 +386,44 @@ dialog::backdrop {
 
         div {
             width: var(--value);
-            background: var(--accent2);
             background: var(--skill);
             height: 100%;
             position: absolute;
             inset: 0;
             margin: 0;
             border-radius: 4px;
+        }
+
+        #html {
+            width: 88%;
+        }
+
+        #css {
+            width: 85%;
+        }
+
+        #js {
+            width: 72%;
+        }
+
+        #java {
+            width: 62%;
+        }
+
+        #python {
+            width: 75%;
+        }
+
+        #sap {
+            width: 45%;
+        }
+
+        #illustrator {
+            width: 85%;
+        }
+
+        #photoshop {
+            width: 70%;
         }
     }
 
@@ -407,6 +439,10 @@ dialog::backdrop {
 
     .bar {
         align-items: flex-start;
+
+        span {
+            color: var(--p4);
+        }
     }
 
     .hollow {
