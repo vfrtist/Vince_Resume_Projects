@@ -4,12 +4,15 @@
     --dark-font1: #35442e;
     --dark-font2: #2b2928;
     --light-font: #cec6c0;
-    --accent1: #aed590;
-    --accentBright: #ace481;
-    --accent2: #82ab63;
+    --main: #aaca91;
+    --accent: #bb885d;
+    --accent: #A38A75;
+    --accent-bright: #CF8A4A;
+    --accent-dark: #AA7C55;
+    --base-dark: #272825;
     --shadow: #484e3647;
     --backdrop: hsla(75, 0%, 26%, 0.278);
-    --skill: linear-gradient(-90deg, rgba(130, 171, 99, 1) 25%, rgba(174, 213, 144, .85) 100%);
+    --skill: linear-gradient(90deg, var(--p3) 0%, var(--main) 80%);
     --top: 10dvh;
 
     --p1: #7a836e;
@@ -75,12 +78,21 @@ h1, h2, h3, h4, h5, h6 {
     transition: all .2s;
 }
 
-h1, h2, h3, h4 {
-    font-family: "Noto Sans", serif;
+h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+}
+
+h2, h3, h4 {
+    font-family: "Lato", serif;
+}
+
+h2 {
+    font-weight: 900;
 }
 
 h4 {
-    font-weight: 800;
+    font-weight: 400;
 }
 
 h5 {
@@ -96,7 +108,6 @@ nav {
     gap: 8px;
     justify-content: center;
     height: 100%;
-    box-shadow: 4px 0px 20px var(--shadow);
 
     ul {
         margin: 0;
@@ -115,7 +126,7 @@ nav {
 }
 
 nav :is(li, a):hover {
-    color: var(--accent2);
+    color: var(--accent);
 }
 
 main {
@@ -142,17 +153,16 @@ main {
     align-items: flex-start;
     justify-content: space-evenly;
     color: var(--light-font);
-    /* color: var(--p4); */
     gap: 20px;
 
     h2 {
         font-size: 52px;
-        color: var(--accent1);
+        color: var(--main);
     }
 
     h3 {
         font-size: 32px;
-        color: var(--accent1);
+        color: var(--main);
     }
 
     h4 {
@@ -181,7 +191,7 @@ main {
 .active::before {
     width: 1cap;
     height: 1cap;
-    background-color: var(--accent1);
+    background-color: var(--main);
     border-radius: 50%;
 }
 
@@ -225,11 +235,11 @@ section {
 
 #projects {
     .icon:hover {
-        fill: var(--accent2);
+        fill: var(--accent);
     }
 
     h3 {
-        border-bottom: 1px solid var(--accent1);
+        border-bottom: 1px solid var(--main);
     }
 }
 
@@ -239,7 +249,7 @@ section {
 }
 
 .line:has(.icon:hover) h4 {
-    color: var(--accent2);
+    color: var(--accent);
 }
 
 .line {
@@ -319,7 +329,7 @@ dialog {
         justify-content: space-between;
 
         div {
-            background: var(--accentBright);
+            background: var(--accent-bright);
         }
 
         .l, .r {
@@ -340,6 +350,7 @@ dialog {
     }
 
     span {
+        font-family: "Lato", serif;
         position: absolute;
         top: 16px;
         right: 16px;
@@ -350,7 +361,7 @@ dialog {
     }
 
     span:hover {
-        color: var(--accentBright);
+        color: var(--accent-bright);
     }
 }
 
@@ -379,10 +390,11 @@ dialog::backdrop {
     .progress {
         width: 100%;
         height: 20px;
-        background: var(--p3);
+        outline: 1px solid var(--p3);
+        outline-offset: -1px;
         position: relative;
         margin: 0;
-        border-radius: 4px;
+        border-radius: 8px;
 
         div {
             width: var(--value);
@@ -391,7 +403,7 @@ dialog::backdrop {
             position: absolute;
             inset: 0;
             margin: 0;
-            border-radius: 4px;
+            border-radius: 8px;
         }
 
         #html {
@@ -456,8 +468,8 @@ dialog::backdrop {
     margin-top: 48px;
 
     .icon {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         transition: all .2s;
         padding: 8px;
         background-color: var(--light-font);
@@ -475,12 +487,12 @@ dialog::backdrop {
 
 #download a:hover {
     .icon {
-        background-color: var(--accentBright);
+        background-color: var(--accent);
         fill: var(--base);
     }
 
     div {
-        color: var(--accentBright);
+        color: var(--accent);
     }
 }
 
