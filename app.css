@@ -5,10 +5,12 @@
   --dark-font2: #2b2928;
   --light-font: #cec6c0;
   --main: #aaca91;
-  --accent: #bb885d;
+  /* --accent: #bb885d;
   --accent: #a38a75;
-  --accent-bright: #cf8a4a;
-  --accent-dark: #aa7c55;
+  --accent: #ddbd82;
+  --accent-bright: #cf8a4a; */
+  --accent: #e29ba4;
+  --accent-bright: #e87d8d;
   --base-dark: #272825;
   --shadow: #484e3647;
   --backdrop: hsla(75, 0%, 26%, 0.278);
@@ -305,7 +307,7 @@ section ul li:first-child {
 
 dialog {
   border: none;
-  background: var(--light-font);
+  background: var(--p3);
   padding: 20px;
   border-radius: 32px;
   display: grid;
@@ -367,11 +369,11 @@ dialog {
     position: absolute;
     top: 0;
     right: 0;
-    color: var(--light-font);
+    color: var(--p3);
     transition: all 0.2s;
     cursor: pointer;
     font-weight: 900;
-    background: var(--accent);
+    background: var(--accent-bright);
     border-radius: 0px 32px 0px 6px;
     width: 24px;
     aspect-ratio: 1;
@@ -381,7 +383,7 @@ dialog {
   }
 
   span:hover {
-    background: var(--accent-bright);
+    background: var(--accent);
   }
 }
 
