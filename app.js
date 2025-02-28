@@ -156,10 +156,7 @@ class Popup {
 
 webLinks.forEach((button) => {
   button.addEventListener("click", (e) => {
-    const button = e.target.closest("a");
-    if (!isValidWidth() && button.getAttribute("value") == "desktop") {
-      // do nothing because it should act normal
-    } else {
+    if (isValidWidth()) {
       e.preventDefault();
       new Popup(e.target);
     }
