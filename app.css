@@ -288,9 +288,9 @@ section {
 }
 
 .icons {
-  gap: 20px;
-  width: 100px;
-  justify-content: flex-end;
+  width: 80px;
+  min-width: 80px;
+  justify-content: space-between;
 }
 
 .variable {
@@ -644,6 +644,9 @@ dialog::backdrop {
   .line .icons {
     flex-direction: column;
     align-items: flex-end;
+    gap: 20px;
+    width: 40px;
+    min-width: 40px;
 
     .icon {
       height: 30px;
