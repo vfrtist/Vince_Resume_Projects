@@ -386,19 +386,25 @@ dialog::backdrop {
 }
 
 #skills {
-  flex-wrap: wrap;
-  align-items: center;
+  section {
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100% !important;
+    justify-content: space-between;
+
+    h3 {
+      width: 100%;
+    }
+  }
 
   .progress {
     width: 100%;
     height: 20px;
-    outline: 1px solid var(--p3);
-    outline-offset: -1px;
     position: relative;
     margin: 0;
     border-radius: 8px;
 
-    div {
+    > div:not(.divider) {
       width: var(--value);
       background: var(--skill);
       height: 100%;
@@ -409,35 +415,35 @@ dialog::backdrop {
     }
 
     #html {
-      width: 88%;
+      width: 73%;
     }
 
     #css {
-      width: 85%;
+      width: 90%;
     }
 
-    #js {
-      width: 72%;
-    }
-
-    #java {
-      width: 62%;
+    #illustrator {
+      width: 90%;
     }
 
     #python {
-      width: 75%;
+      width: 70%;
+    }
+
+    #js {
+      width: 70%;
+    }
+
+    #photoshop {
+      width: 65%;
+    }
+
+    #java {
+      width: 55%;
     }
 
     #sap {
       width: 50%;
-    }
-
-    #illustrator {
-      width: 85%;
-    }
-
-    #photoshop {
-      width: 70%;
     }
   }
 
@@ -447,7 +453,7 @@ dialog::backdrop {
   }
 
   .container {
-    width: min(60dvw, 450px);
+    width: min(60dvw, 550px);
     gap: 8px 20px;
   }
 
@@ -461,6 +467,24 @@ dialog::backdrop {
 
   .hollow {
     fill: var(--base);
+  }
+
+  .divider {
+    justify-content: space-evenly;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    outline: 1px solid var(--p3);
+    outline-offset: -1px;
+    border-radius: 8px;
+
+    div {
+      width: 4px;
+      height: 100%;
+      background: var(--base);
+    }
   }
 }
 
@@ -566,6 +590,10 @@ dialog::backdrop {
   }
 
   #download {
+    justify-content: center;
+  }
+
+  #skills section {
     justify-content: center;
   }
 }
