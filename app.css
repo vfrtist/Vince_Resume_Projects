@@ -201,8 +201,7 @@ main {
 header {
   width: 100%;
   height: 100%;
-  background: center / cover
-    url(Images/georgia-de-lotz-muN_TndU9A0-unsplash.jpg);
+  background: center / cover url(Images/georgia-de-lotz-muN_TndU9A0-unsplash.jpg);
   z-index: 1;
   grid-row: 1;
   grid-column: 1 / 3;
@@ -241,6 +240,7 @@ section {
 
 #projects h3 {
   border-bottom: 1px solid var(--main);
+  margin-bottom: 4px;
 }
 
 .icon svg {
@@ -253,7 +253,7 @@ section {
   gap: 20px;
 }
 
-.line > .container {
+.line>.container {
   align-items: flex-start;
 }
 
@@ -265,7 +265,7 @@ section {
   align-items: flex-start;
 }
 
-.variable + div {
+.variable+div {
   margin-left: 20px;
 }
 
@@ -404,7 +404,7 @@ dialog::backdrop {
     margin: 0;
     border-radius: 8px;
 
-    > div:not(.divider) {
+    >div:not(.divider) {
       width: var(--value);
       background: var(--skill);
       height: 100%;
@@ -453,7 +453,7 @@ dialog::backdrop {
   }
 
   .container {
-    width: min(60dvw, 550px);
+    width: min(60dvw, 450px);
     gap: 8px 20px;
   }
 
