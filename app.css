@@ -442,6 +442,10 @@ dialog::backdrop {
       width: 55%;
     }
 
+    #php {
+      width: 50%;
+    }
+
     #sap {
       width: 50%;
     }
