@@ -446,6 +446,10 @@ dialog::backdrop {
       width: 50%;
     }
 
+    #sql {
+      width: 50%;
+    }
+
     #sap {
       width: 50%;
     }
