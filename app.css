@@ -238,7 +238,7 @@ section {
   transition: all 0.2s;
 }
 
-#projects h3 {
+:is(#projects, #skills) h3 {
   border-bottom: 1px solid var(--main);
   margin-bottom: 4px;
 }
@@ -427,8 +427,9 @@ dialog::backdrop {
     }
 
     #python {
-      width: 70%;
+      width: 72%;
     }
+
 
     #js {
       width: 70%;
@@ -436,6 +437,10 @@ dialog::backdrop {
 
     #photoshop {
       width: 65%;
+    }
+
+    #cSharp {
+      width: 60%;
     }
 
     #java {
